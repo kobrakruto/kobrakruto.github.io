@@ -23,14 +23,14 @@
     </body>
 
     <script type="text/javascript">
-        const suschik_boom_timestamp = 1603096530;
+        const suschik_boom_timestamp = 1609761600;
 
         function getSuschikCost() {
             return Math.floor((new Date().getTime() / 1000 - suschik_boom_timestamp) * 3.3476932792 * 100000);
         }
 
         function update() {
-            document.getElementById("kurs").innerText = "1 сущик = $" + getSuschikCost().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById("kurs").innerText = "$1 = " + getSuschikCost().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " сущиков";
         }
 
         update();
