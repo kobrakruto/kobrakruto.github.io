@@ -10,16 +10,102 @@
 
         * {
             font-family: 'Open Sans', sans-serif;
+            margin: 0;
+        }
+
+        .kurs_container {
+        	height: 100vh;
         }
 
         #kurs {
             text-align: center;
             padding-top: 45vh;
         }
+
+
+        .section {
+        	border-top: solid 1px #000;
+        }
+
+        .section h2 {
+        	padding-top: 1em;
+        	text-align: center;
+        }
+
+        .section p {
+        	padding-top: 1em;
+
+        	padding-left: 35vw;
+        	padding-right: 35vw;
+        }
+
+        .section button {
+        	background-color: white;
+        	color: black;
+        	border: solid 2px #000;
+        	border-radius: 100px;
+        	min-height: 3em;
+        	min-width: 15em;
+        	font-size: 18px;
+
+        	transition: color 0.25s, background-color 0.25s;
+        }
+
+        .section button:hover {
+        	background-color: black;
+        	color: white;
+        }
+
+
+        a {
+        	color: #777777;
+        	text-decoration-style: dashed;
+
+        	transition: color 0.25s;
+        }
+
+        a:hover {
+        	color: #000;
+        }
+
+
+        .footer {
+        	margin-top: 10em;
+        	border-top: solid 1px #000;
+        	padding-left: 10vw;
+        	padding-top: 2vh;
+        	padding-bottom: 2vh;
+        }
+
+        @media screen and (max-width: 1000px) {
+        	.footer {
+        		padding-left: 0;
+        		text-align: center;
+        	}
+
+        	.section p {
+        		padding-left: 25vw;
+        		padding-right: 25vw;
+        	}
+        }
     </style>
 
     <body>
-        <h1 id="kurs" />
+    	<div class="kurs_container">
+        	<h1 id="kurs"></h1>
+    	</div>
+
+    	<div class="section">
+    		<h2>Кобристский сущик (KSS) - новая эра в сфере платежей</h2>
+
+    		<p>Кобристский сущик имеет <a href="#kurs">стабильный курс</a> и огромные перспективы. Покупая Кобристские сущики вы делаете вклад в своё будущее.</p>
+
+    		<p style="padding-left: 0; padding-right: 0; text-align: center;"><button onclick="window.location = 'https://www.autodesk.com/products/autocad/overview'">Купить Кобристский сущик</button></p>
+    	</div>
+
+    	<div class="footer">
+    		&copy; Комаринская Общественная Боевая Реваншистская Анафема 2021
+    	</div>
     </body>
 
     <script type="text/javascript">
@@ -30,10 +116,22 @@
         }
 
         function update() {
-            document.getElementById("kurs").innerText = "$1 = " + getSuschikCost().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " сущиков";
+        	let suschik_cost_string = getSuschikCost().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById("kurs").innerText = "$1 = " + suschik_cost_string + " KSS";
         }
 
         update();
         setInterval(update, 1000);
+
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+		    anchor.addEventListener('click', function (e) {
+		        e.preventDefault();
+
+		        document.querySelector(this.getAttribute('href')).scrollIntoView({
+		            behavior: 'smooth'
+		        });
+		    });
+		});
     </script>
 </html>
